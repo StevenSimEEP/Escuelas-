@@ -62,7 +62,7 @@ public class EscuelaController {
 	    Optional<Escuela> optional = escuelaRepository.findById(requestedId);
 	    if (optional.isPresent()) {
 	        Escuela escuela = optional.get();
-	        escuela.setNombre(escuelaActualizada.getNombre());  // Actualiza los datos necesarios
+	        escuela.setNombre(escuelaActualizada.getNombre()); 
 	        escuelaRepository.save(escuela);
 	        return ResponseEntity.noContent().build();
 	    } else {

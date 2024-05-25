@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Escuela } from '../escuela';
 import { EscuelaService } from '../escuela.service';
 import { MensajeService } from '../mensaje.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-escuelas',
@@ -11,8 +12,8 @@ import { MensajeService } from '../mensaje.service';
 export class EscuelasComponent implements OnInit{
   escuelas: Escuela[] = [];
   constructor(private escuelaService: EscuelaService, private mensajeService:
-  MensajeService) {}
-  escuelaSeleccionada?: Escuela;
+  MensajeService, private router: Router) {}
+  //escuelaSeleccionada?: Escuela;
 
   // onSelect(escuela: Escuela): void {
   //   this.escuelaSeleccionada = escuela;
@@ -31,10 +32,13 @@ export class EscuelasComponent implements OnInit{
   add(nombre: string): void {
     nombre = nombre.trim();
     if (!nombre) { return; }
-    this.escuelaService.addEscuela({ nombre } as Escuela)
-      .subscribe(newEscuela => {
-        this.escuelas.push(newEscuela);
-      });
+    this.escuelaService.addEscuela({ nombre } as Escuela).subscribe(newEscuela => {
+      this.escuelas.push(newEscuela);
+    });
+  }
+
+  goToAddEscuela(): void {
+    this.router.navigate(['/agregar-escuela']);
   }
 
   delete(escuela: Escuela): void {

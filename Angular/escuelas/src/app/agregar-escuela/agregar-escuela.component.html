@@ -1,0 +1,9 @@
+<h2>Agregar Nueva Escuela</h2>
+<form (ngSubmit)="addEscuela()">
+  <div>
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre" [(ngModel)]="escuela.nombre" name="nombre" required>
+  </div>
+  <button type="submit">Agregar</button>
+</form>
+<button (click)="goBack()">Cancelar</button>

@@ -10,6 +10,7 @@ import { EscuelaDetailComponent } from './escuela-detail/escuela-detail.componen
 import { MensajesComponent } from './mensajes/mensajes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EscuelaSearchComponent } from './escuela-search/escuela-search.component';
+import { AgregarEscuelaComponent } from './agregar-escuela/agregar-escuela.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EscuelaSearchComponent } from './escuela-search/escuela-search.componen
     EscuelaDetailComponent,
     MensajesComponent,
     DashboardComponent,
-    EscuelaSearchComponent
+    EscuelaSearchComponent,
+    AgregarEscuelaComponent
   ],
   imports: [
     BrowserModule,
