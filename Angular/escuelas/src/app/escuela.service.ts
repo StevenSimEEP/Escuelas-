@@ -48,8 +48,9 @@ export class EscuelaService {
      );
    }
 
-  updateEscuela(escuela: Escuela): Observable<any> {
-    return this.http.put(this.escuelasUrl, escuela, this.httpOptions).pipe(
+  updateEscuela(escuela: Escuela): Observable<Escuela> {
+    const url = `${this.escuelasUrl}/${escuela.id}`;
+    return this.http.put<Escuela>(url, escuela, this.httpOptions).pipe(
       tap(_ => this.log(`updated escuela id=${escuela.id}`)),
       catchError(this.handleError<any>('updateEscuela'))
     );

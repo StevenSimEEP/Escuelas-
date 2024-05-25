@@ -2,7 +2,6 @@ package com.example.escuela;
 
 import java.util.Objects;
 
-import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

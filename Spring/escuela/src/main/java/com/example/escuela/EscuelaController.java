@@ -58,18 +58,16 @@ public class EscuelaController {
 	}
 	
 	@PutMapping("/{requestedId}")
-	private ResponseEntity<Void> putEscuela(@PathVariable Long requestedId, @RequestBody Escuela escuelaActualizada) {
+	public ResponseEntity<Void> putEscuela(@PathVariable Long requestedId, @RequestBody Escuela escuelaActualizada) {
 	    Optional<Escuela> optional = escuelaRepository.findById(requestedId);
 	    if (optional.isPresent()) {
-	    	Escuela escuela = optional.get();
-		    Escuela updatedEscuela = new Escuela(
-		    		escuela.getId(), 
-		    		escuelaActualizada.getNombre());
-		    escuelaRepository.save(updatedEscuela);
-		    return ResponseEntity.noContent().build();
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	        Escuela escuela = optional.get();
+	        escuela.setNombre(escuelaActualizada.getNombre());  // Actualiza los datos necesarios
+	        escuelaRepository.save(escuela);
+	        return ResponseEntity.noContent().build();
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 	
 	@DeleteMapping("/{id}")
