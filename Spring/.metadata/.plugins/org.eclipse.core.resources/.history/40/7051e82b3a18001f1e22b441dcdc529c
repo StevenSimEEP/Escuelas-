@@ -1,0 +1,59 @@
+package com.example.escuela;
+
+import org.assertj.core.util.Arrays;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.JsonTest;
+import org.springframework.boot.test.json.JacksonTester;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@JsonTest
+class EscuelaJsonTest {
+
+	@Autowired
+	private JacksonTester<Escuela> json;
+	
+	@Autowired
+    private JacksonTester<Escuela[]> jsonList;
+	
+	private Escuela[] escuelas;
+	
+	@BeforeEach
+    void setUp() {
+        escuelas = Arrays.array(
+                new Escuela(99L, "Bedoya"),
+                new Escuela(100L, "Montalvo"),
+                new Escuela(101L, "Luxemburgo"));
+    }
+
+    @Test
+    void escueladSerializationTest() throws IOException {
+        Escuela escuela = escuelas[0];
+        assertThat(json.write(escuela)).isStrictlyEqualToJson("single.json");
+        assertThat(json.write(escuela)).hasJsonPathNumberValue("@.id");
+        assertThat(json.write(escuela)).extractingJsonPathNumberValue("@.id")
+                .isEqualTo(99);
+        assertThat(json.write(escuela)).hasJsonPathStringValue("@.nombre");
+        assertThat(json.write(escuela)).extractingJsonPathStringValue("@.nombre")
+             .isEqualTo("Bedoya");
+    }
+    
+    @Test
+    void escuelaDeserializationTest() throws IOException {
+       String expected = """
+               {
+                   "id":99,
+                   "nombre":"Bedoya"
+               }
+               """;
+       assertThat(json.parse(expected))
+               .isEqualTo(new Escuela(99L, "Bedoya"));
+       assertThat(json.parseObject(expected).getId()).isEqualTo(99);
+       assertThat(json.parseObject(expected).getNombre()).isEqualTo("Bedoya");
+    }
+}
+

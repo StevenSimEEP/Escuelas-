@@ -1,0 +1,12 @@
+<div *ngIf="escuela">
+
+  <h2>{{escuela.nombre | uppercase}} Detalles</h2>
+  <div><span>id: </span>{{escuela.id}}</div>
+  <div>
+    <label for="hero-name">Nombre escuela: </label>
+    <input id="hero-name" [(ngModel)]="escuela.nombre" placeholder="Nombre escuela">
+  </div>
+  <button type="button" (click)="goBack()">Regresar</button>
+  <button type="button" (click)="save()">Guardar</button>
+  <button type="button" class="delete" (click)="delete()">Eliminar</button>
+</div>

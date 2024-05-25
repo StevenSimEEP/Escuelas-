@@ -1,0 +1,12 @@
+package com.example.escuela;
+
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class EscuelaJsonTest {
+
+	@Test
+	void myFirstTest() {
+		assertThat(1).isEqualTo(42);
+	}
+}

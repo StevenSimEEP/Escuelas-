@@ -1,0 +1,14 @@
+package com.example.escuela;
+
+public class Escuela {
+
+	private Long id;
+	private String nombre;
+	
+	public Escuela(Long id, String nombre) {
+		this.id = id;
+		this.nombre = nombre;
+	}
+	
+	
+}

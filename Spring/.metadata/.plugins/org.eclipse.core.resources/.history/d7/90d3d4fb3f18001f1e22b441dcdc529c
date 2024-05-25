@@ -1,0 +1,121 @@
+package com.example.escuela;
+
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import net.minidev.json.JSONArray;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.DirtiesContext;
+
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.annotation.DirtiesContext.*;
+
+
+import java.net.URI;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+class EscuelaApplicationTests {
+	@Autowired
+	TestRestTemplate restTemplate;
+
+	@Test
+	void devuelveUnaEscuelaCuandoDatosSonGuardados() {
+		ResponseEntity<String> response = restTemplate.getForEntity("/escuelas/99", String.class);
+
+		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+		DocumentContext documentContext = JsonPath.parse(response.getBody());
+		Number id = documentContext.read("$.id");
+		assertThat(id).isEqualTo(99);
+		
+		String nombre = documentContext.read("$.nombre");
+		assertThat(nombre).isEqualTo("Bedoya");
+	}
+	
+	@Test
+	void noDevuelveUnaEscuelaCuandoIdEsDesconocido() {
+	  ResponseEntity<String> response = restTemplate.getForEntity("/escuelas/1000", String.class);
+
+	  assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+	  assertThat(response.getBody()).isBlank();
+	}
+	
+	@Test
+	 void devuelveTodasLasEscuelasCuandoSonRequeridas() {
+		ResponseEntity<String> response = restTemplate.getForEntity("/escuelas", String.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	     DocumentContext documentContext = JsonPath.parse(response.getBody());
+	     int universidadCount = documentContext.read("$.length()");
+	     assertThat(universidadCount).isEqualTo(4);
+
+	     JSONArray ids = documentContext.read("$..id");
+	     assertThat(ids).containsExactlyInAnyOrder(99, 100, 101);
+
+	     JSONArray amounts = documentContext.read("$..nombre");
+	     assertThat(amounts).containsExactlyInAnyOrder("Bedoya", "Montalvo", "Luxemburgo");
+	 }
+	
+	@Test
+	void sdevuelveUnaPaginaDeEscuelas() {
+	    ResponseEntity<String> response = restTemplate.getForEntity("/escuelas?page=0&size=1", String.class);
+	    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	    DocumentContext documentContext = JsonPath.parse(response.getBody());
+	    JSONArray page = documentContext.read("$[*]");
+	    assertThat(page.size()).isEqualTo(1);
+	}
+	
+	@Test
+	void devuelveUnaPaginaOrdenadaDeEscuelas() {
+	    ResponseEntity<String> response = restTemplate.getForEntity("/escuelas?page=0&size=1&sort=nombre,asc", String.class);
+	    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	    DocumentContext documentContext = JsonPath.parse(response.getBody());
+	    JSONArray read = documentContext.read("$[*]");
+	    assertThat(read.size()).isEqualTo(1);
+
+	    String nombre = documentContext.read("$[0].nombre");
+	    assertThat(nombre).isEqualTo("Bedoya");
+	}
+	
+	@Test
+	void devuelveUnaPaginaOrdenadaDeEscuelasSinParametrosYUsaValoresPorDefecto() {
+	    ResponseEntity<String> response = restTemplate.getForEntity("/escuelas", String.class);
+	    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	    DocumentContext documentContext = JsonPath.parse(response.getBody());
+	    JSONArray page = documentContext.read("$[*]");
+	    assertThat(page.size()).isEqualTo(4);
+
+	    JSONArray nombres = documentContext.read("$..nombre");
+	    assertThat(nombres).containsExactly("Bedoya", "Mejia", "Montalvo", "Luxemburgo");
+	}
+	
+	@Test
+    @DirtiesContext
+	void devuelveUnaEscuelaCreada() {
+	   Escuela nuevaEscuela = new Escuela(44L, "Mejia");
+	   ResponseEntity<Void> createResponse = restTemplate.postForEntity("/escuelas", 
+			   	nuevaEscuela, Void.class);
+	   assertThat(createResponse.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+	
+	   URI locationOfNewEscuela = createResponse.getHeaders().getLocation();
+	   ResponseEntity<String> getResponse = restTemplate.getForEntity(locationOfNewEscuela, 
+			   	String.class);
+	   assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+	   
+	   DocumentContext documentContext = JsonPath.parse(getResponse.getBody());
+	   Number id = documentContext.read("$.id");
+	   String nombre = documentContext.read("$.nombre");
+
+	   assertThat(id).isNotNull();
+	   assertThat(nombre).isEqualTo("Mejia");
+	}
+}
