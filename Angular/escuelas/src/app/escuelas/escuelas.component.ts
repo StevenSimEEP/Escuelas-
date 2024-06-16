@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 })
 export class EscuelasComponent implements OnInit{
   escuelas: Escuela[] = [];
-  constructor(private escuelaService: EscuelaService, private mensajeService:
-  MensajeService, private router: Router) {}
+  constructor(private escuelaService: EscuelaService, private mensajeService: MensajeService, private router: Router) {}
   //escuelaSeleccionada?: Escuela;
 
   // onSelect(escuela: Escuela): void {

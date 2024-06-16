@@ -64,7 +64,7 @@ class EscuelaApplicationTests {
 	 }
 	
 	@Test
-	void sdevuelveUnaPaginaDeEscuelas() {
+	void devuelveUnaPaginaDeEscuelas() {
 	    ResponseEntity<String> response = restTemplate.getForEntity("/escuelas?page=0&size=1", String.class);
 	    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 

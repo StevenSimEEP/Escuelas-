@@ -1,0 +1,100 @@
+{
+  "locations": [
+    {
+      "id": "1",
+      "nombre": "Universidad Autónoma de Madrid",
+      "ubicacion": "Ciudad Universitaria de Cantoblanco, 28049 Madrid",
+      "estado": "Pública",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+      "disponibilidad": "Abierta"
+    },
+    {
+      "id": "2",
+      "nombre": "Universidad Carlos III de Madrid",
+      "ubicacion": "CALLE MADRID, 126",
+      "estado": "Pública",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
+      "disponibilidad": "Cerrada"
+    },
+    {
+      "id": "3",
+      "nombre": "Universidad Politécnica de Madrid",
+      "ubicacion": "CALLE RAMIRO DE MAEZTU, 7",
+      "estado": "Pública",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+      "disponibilidad": "Abierta"
+    },
+    {
+      "id": "4",
+      "nombre": "Universidad Complutense de Madrid",
+      "ubicacion": "Av. Complutense, s/n, Moncloa - Aravaca, 28040 Madrid",
+      "estado": "Pública",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_ucm.jpg?itok=Ap-Zuu6t",
+      "disponibilidad": "Cerrada"
+    },
+    {
+      "id": "5",
+      "nombre": "Universidad Rey Juan Carlos de Madrid",
+      "ubicacion": " C/ Quintana, 2 – 3ª planta, 28008 Madrid",
+      "estado": "Pública",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_urjc.jpg?itok=b1NX_-nd",
+      "disponibilidad": "Abierta"
+    },
+    {
+      "id": "6",
+      "nombre": "Universidad Alfonso X El Sabio",
+      "ubicacion": "Avenida Universidad, 1, 28691 Villanueva de la Cañada, Madrid",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uax_recortada_2_0.jpg?itok=pN7oPKqA",
+      "disponibilidad": "f"
+    },
+    {
+      "id": "7",
+      "nombre": "Universidad Antonio de Nebrija",
+      "ubicacion": "C. de Vallehermoso, 10, Chamberí, 28015 Madrid",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/nebrija_recortada_2_0.jpg?itok=s_jybN-s",
+      "disponibilidad": "h"
+    },
+    {
+      "id": "8",
+      "nombre": "Universidad a Distancia de Madrid-UDIMA",
+      "ubicacion": "Vía de Servicio A-6, 15, 28400 Collado Villalba, Madrid",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/udima-recortada1.jpg?itok=CabP7u61",
+      "disponibilidad": "j"
+    },
+    {
+      "id": "9",
+      "nombre": "Universidad Europea de Madrid",
+      "ubicacion": "CALLE TAJO (LG BOSQUE CAMPUS UNIVERSITARIO), S/N",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uem_recortada.jpg?itok=CTcduz7w",
+      "disponibilidad": "k"
+    },
+    {
+      "id": "10",
+      "nombre": "Universidad Francisco de Vitoria",
+      "ubicacion": "M-515, km 1, 800, 28223 Pozuelo de Alarcón, Madrid",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/ufv_recortada.jpg?itok=LMcHvaPt",
+      "disponibilidad": "l"
+    },
+    {
+      "id": "11",
+      "nombre": "Universidad Internacional de la Empresa",
+      "ubicacion": "calle Joaquín Costa 41, 28002-Madrid",
+      "estado": "OR",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/img/publicaciones/unie_localizacion_universidades.jpg?itok=t0gqw7GW",
+      "disponibilidad": "ñ"
+    },
+    {
+      "id": "12",
+      "nombre": "Universidad San Pablo CEU ",
+      "ubicacion": "C. de Julián Romea, 23, Chamberí, 28003 Madrid",
+      "estado": "Privada",
+      "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/ceu_recortada.jpg?itok=KEKaezra",
+      "disponibilidad": "Abierta"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+<article>
+  <img class="listing-photo" [src]="universidad?.photo"
+    alt="Exterior photo of {{universidad?.nombre}}"/>
+  <section class="listing-description">
+    <h2 class="listing-heading">{{universidad?.nombre}}</h2>
+    <p class="listing-location">{{universidad?.ubicacion}}</p>
+  </section>
+  <section class="listing-features">
+    <h2 class="section-heading">Sobre esta universidad</h2>
+    <ul>
+      <li>Estado: {{universidad?.estado}}</li>
+      <li>Dsiponibilidad: {{universidad?.disponibilidad}}</li>
+    </ul>
+  </section>
+  <section class="listing-apply">
+    <button type="submit" class="primary" (click)="toggleFormulario()"> {{ textoBoton }} </button>
+    <button type="button" class="primary" (click)="eliminarUniversidad()">Eliminar universidad</button>
+    <form *ngIf="mostrarFormulario" [formGroup]="applyForm" (submit)="submitApplication()">
+      <h2 class="section-heading">Modificar universidad</h2>
+      <label for="first-name">Nombre</label>
+      <input id="nombre" type="text" formControlName="nombre">
+
+      <label for="ubicacion">Ubicación</label>
+      <input id="ubicacion" type="text" formControlName="ubicacion">
+
+      <label for="estado">Estado</label>
+      <input id="estado" type="text" formControlName="estado">
+
+      <label for="photo">Imagen</label>
+      <input id="photo" type="text" formControlName="photo" placeholder="URL imagen">
+
+      <label for="disponibilidad">Dsiponibilidad</label>
+      <input id="disponibilidad" type="text" formControlName="disponibilidad">
+
+      <button type="submit" class="primary">Aplicar</button>
+    </form>
+  </section>
+</article>

@@ -1,0 +1,26 @@
+[
+{
+  "id": 1,
+  "nombre": "Universidad Autónoma de Madrid",
+  "ubicacion": "Ciudad Universitaria de Cantoblanco, 28049 Madrid",
+  "estado": "Pública",
+  "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/uam_4.jpg?itok=T4uXwmfB",
+  "disponibilidad": "Abierta"	
+},
+{
+   "id": 2,
+   "nombre": "Universidad Carlos III de Madrid",
+   "ubicacion": "CALLE MADRID, 126",
+   "estado": "Pública",
+   "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/rectorado_uc3m.jpg?itok=CqDwgmkZ",
+   "disponibilidad": "Cerrada"
+},
+{
+     "id": 3,
+     "nombre": "Universidad Politécnica de Madrid",
+     "ubicacion": "CALLE RAMIRO DE MAEZTU, 7",
+     "estado": "Pública",
+     "photo": "https://www.comunidad.madrid/sites/default/files/styles/imagen_enlace_opcional/public/aud/educacion/upm_2.jpg?itok=BiaVDFnT",
+     "disponibilidad": "Abierta"
+}
+]

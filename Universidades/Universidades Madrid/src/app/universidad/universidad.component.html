@@ -1,0 +1,9 @@
+<section class="listing">
+  <img class="listing-photo"
+    [src]="universidad.photo"
+    alt="Exterior photo of {{universidad.nombre}}">
+  <h2 class="listing-heading">{{ universidad.nombre }}</h2>
+  <p class="listing-location">{{ universidad.ubicacion}}, {{universidad.estado }}</p>
+  <a [routerLink]="['/details', universidad.id]">Ver más</a>
+  <button type="button" class="delete button-selector" (click)="eliminarUniversidad(universidad.id)">Eliminar universidad</button>
+</section>
